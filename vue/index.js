@@ -55,7 +55,12 @@ v-for="item in list"> City :{{item.exc_city}} - Place: {{item.exc_name}} </li>
     watch: { '$route'() { this.fetchData() } },
     methods: {
         fetchData() {
-            fetch('http://dev.standpoint.com.ua/api/developer')
+            fetch('http://dev.standpoint.com.ua/api/developer',{
+                method: 'GET',
+                mode: "no-cors",
+                headers: {
+                    'Content-Type': 'application/json',
+                }})
                 .then(respons => respons.json())
                 .then(list => {
                     console.log(list)
